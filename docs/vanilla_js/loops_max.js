@@ -31,7 +31,8 @@ console.log(`${max}\n${index+1}`);
 for(let a of inputs) {
     if(max < a) {
         max= a;
+        index = inputs.indexOf(a);
     }
 }
 
-console.log(`${max}\n${inputs.indexOf(max)}`);
+console.log(`${max}\n${index+1}`);

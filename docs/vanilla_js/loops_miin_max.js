@@ -13,7 +13,7 @@ const filepath =
     // let inputs = fs.readFileSync(filepath).toString().trim().split(' ').map(Number);
     // let a= inputs.length;
     // let b = inputs;
-let inputs = fs.readFileSync(filepath).toString().trim().split(',');
+let inputs = fs.readFileSync(filepath).toString().trim().split('\n');
 let a = parseInt(inputs[0]);
 let b = inputs[1].split(' ').map(Number);
 
