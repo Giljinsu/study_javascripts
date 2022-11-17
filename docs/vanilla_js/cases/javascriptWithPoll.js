@@ -66,7 +66,6 @@ function userAnswer(i) { // 유저 답변
 }
 
 // ======================================== 출력 ========================================
-//const sortedTypeArray = animalArray.sort((a,b) => a.type - b.type);
 
 for(let i = 0 ; i<surveyQuestions.length; i++) {
     surveyQuestion(i);
