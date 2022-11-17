@@ -24,9 +24,9 @@ const fs = require('fs');
 const filepath =
     process.platform === "linux" ? "/dev/stdin" : "docs/vanilla_js/cases/answers.txt"
 
-let inputs = fs.readFileSync(filepath).toString().trim().split("\n").map(Number);
+let inputs = fs.readFileSync(filepath).toString().trim().split("\n").map(Number); // 유저의 답변
 
-let surveyQuestions = [
+let surveyQuestions = [ //문항
     {questions_uid : "Q1", questions:"해당 매장을 방문시 매장은 청결 하였습니까?", orders : 1},
     {questions_uid : "Q4", questions:"해당 매장을 다음에도 재방문 하실 의향이 있으십니까?", orders : 4},
     {questions_uid : "Q2", questions:"직원이 제조한 음료에 대해 맛은 좋았습니까?", orders : 2},
@@ -34,7 +34,7 @@ let surveyQuestions = [
     {questions_uid : "Q3", questions:"주문시 직원은 고객님께 친절 하였습니까?", orders : 3}
 ];
 
-let surveyAnswers = [
+let surveyAnswers = [ //답항
     {example_uid : "E5",  example:"매우 그렇다", orders : 5},
     {example_uid : "E1", example:"전혀 아니다", orders : 1},
     {example_uid : "E4", example:"그렇다", orders : 4},
@@ -42,7 +42,7 @@ let surveyAnswers = [
     {example_uid : "E3", example:"보통이다", orders : 3}
 ];
 
-const answers = [
+const answers = [ // 문항 답항 연결
     { questions_uid: "Q1", example_uid: "E1" },
     { questions_uid: "Q1", example_uid: "E2" },
     { questions_uid: "Q1", example_uid: "E3" },
@@ -61,14 +61,14 @@ const answers = [
     { questions_uid: "Q5", example_uid: "E2" },
     { questions_uid: "Q5", example_uid: "E3" },
   ];
-//   survey(0)
+
 // 정렬
 surveyQuestions.sort((a,b) => a['orders']-b['orders']);
 surveyAnswers.sort((a,b) => a['orders']-b['orders']);
 
 // ======================================== 처리 ========================================
 
-function survey(i) { // 문항별 답항 E1 E2 가져오기
+function survey(i) { // 질문 추가시 자동으로 추가 하기 위함
     let exmaple_ans = "";
     let ans_num = "";
     
@@ -83,7 +83,7 @@ function survey(i) { // 문항별 답항 E1 E2 가져오기
     example_strs.forEach(example_str => {
         ans_num += (example_str.charAt(1)-1)+" ";
     })
-    
+
     ans_num= ans_num.trim().split(' ').map(Number);
     return ans_num; // E1, E2 여기서 E알파벳 없애고 숫자로 변경
 }
