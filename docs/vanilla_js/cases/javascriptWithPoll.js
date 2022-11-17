@@ -17,6 +17,7 @@
 // 출력
 // 매칭 출력
 
+// ======================================== 입력 ========================================
 let str = "";
 
 const fs = require('fs');
@@ -41,7 +42,7 @@ let surveyAnswers = [
     {example_uid : "E3", example:"보통이다", orders : 3}
 ];
 
-// let surveys = [surveyQuestions, surveyAnswers, inputs]
+// ======================================== 처리 ========================================
 for(let i = 0 ; i<surveyQuestions.length; i++) {
     surveyQuestion(i);
     switch(i) {
@@ -68,17 +69,18 @@ for(let i = 0 ; i<surveyQuestions.length; i++) {
             }       
 }
 
+// ======================================== 출력 ========================================
 console.log("--------------------- 설문자 선택 --------------------------");
 for(let i = 0 ; i<surveyQuestions.length; i++) {
     surveyQuestion(i);
     userAnswer(i);
 }
 
-function surveyQuestion(i) {
+function surveyQuestion(i) { //설문 질문
     console.log(`${surveyQuestions[i]['orders']}. ${surveyQuestions[i]['questions']}`);
 }
 
-function surveyAnswer(...args) {
+function surveyAnswer(...args) { // 설문 답항
     args.forEach(arg => {
         str += `(${surveyAnswers[arg]['orders']}) ${surveyAnswers[arg]['example']} `;
     })
@@ -87,7 +89,7 @@ function surveyAnswer(...args) {
     str= "";
 }
 
-function userAnswer(i) {
+function userAnswer(i) { // 유저 답변
     console.log(`답) (${inputs[i]})\n`);
 }
 
