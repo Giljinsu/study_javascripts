@@ -95,3 +95,4 @@ for(let i = 0 ; i<surveyQuestions.length; i++) {
     userAnswer(i);
 }
 
+console.log("이용해주셔서 감사합니다!");
