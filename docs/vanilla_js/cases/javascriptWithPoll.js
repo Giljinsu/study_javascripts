@@ -43,11 +43,6 @@ let surveyAnswers = [
 ];
 
 // ======================================== 처리 ========================================
-console.log("--------------------- 설문자 선택 --------------------------");
-for(let i = 0 ; i<surveyQuestions.length; i++) {
-    surveyQuestion(i);
-    userAnswer(i);
-}
 
 function surveyQuestion(i) { //설문 질문
     console.log(`${surveyQuestions[i]['orders']}. ${surveyQuestions[i]['questions']}`);
@@ -93,4 +88,10 @@ for(let i = 0 ; i<surveyQuestions.length; i++) {
             }       
 }
 
+console.log("--------------------- 설문자 선택 --------------------------");
+
+for(let i = 0 ; i<surveyQuestions.length; i++) {
+    surveyQuestion(i);
+    userAnswer(i);
+}
 
