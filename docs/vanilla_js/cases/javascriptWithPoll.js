@@ -42,6 +42,10 @@ let surveyAnswers = [
     {example_uid : "E3", example:"보통이다", orders : 3}
 ];
 
+// 정렬
+surveyQuestions.sort((a,b) => a['orders']-b['orders']);
+surveyAnswers.sort((a,b) => a['orders']-b['orders']);
+
 // ======================================== 처리 ========================================
 
 function surveyQuestion(i) { //설문 질문
@@ -62,27 +66,29 @@ function userAnswer(i) { // 유저 답변
 }
 
 // ======================================== 출력 ========================================
+//const sortedTypeArray = animalArray.sort((a,b) => a.type - b.type);
+
 for(let i = 0 ; i<surveyQuestions.length; i++) {
     surveyQuestion(i);
     switch(i) {
             case 0:  
-                surveyAnswer(1,3,4);
+                surveyAnswer(0,1,2);
                 userAnswer(i);
               break;
             case 1:
-                surveyAnswer(1,3,4,2);
+                surveyAnswer(0,1,2,3);
                 userAnswer(i);
                 break;
             case 2:
-                surveyAnswer(1,3);
+                surveyAnswer(0,1);
                 userAnswer(i);
                  break;    
             case 3:
-                surveyAnswer(1,3,4,2,0);
+                surveyAnswer(0,1,2,3,4);
                 userAnswer(i);
                 break;
             case 4:
-                surveyAnswer(1,3,4);
+                surveyAnswer(0,1,2);
                 userAnswer(i);
                 break;
             }       
