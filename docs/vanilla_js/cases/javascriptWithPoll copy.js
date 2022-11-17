@@ -42,57 +42,17 @@ let surveyAnswers = [
     {example_uid : "E3", example:"보통이다", orders : 3}
 ];
 
-const answers = [
-    { questions_uid: "Q1", example_uid: "E1" },
-    { questions_uid: "Q1", example_uid: "E2" },
-    { questions_uid: "Q1", example_uid: "E3" },
-    { questions_uid: "Q2", example_uid: "E1" },
-    { questions_uid: "Q2", example_uid: "E2" },
-    { questions_uid: "Q2", example_uid: "E3" },
-    { questions_uid: "Q2", example_uid: "E4" },
-    { questions_uid: "Q3", example_uid: "E1" },
-    { questions_uid: "Q3", example_uid: "E2" },
-    { questions_uid: "Q4", example_uid: "E1" },
-    { questions_uid: "Q4", example_uid: "E2" },
-    { questions_uid: "Q4", example_uid: "E3" },
-    { questions_uid: "Q4", example_uid: "E4" },
-    { questions_uid: "Q4", example_uid: "E5" },
-    { questions_uid: "Q5", example_uid: "E1" },
-    { questions_uid: "Q5", example_uid: "E2" },
-    { questions_uid: "Q5", example_uid: "E3" },
-  ];
-//   survey(0)
 // 정렬
 surveyQuestions.sort((a,b) => a['orders']-b['orders']);
 surveyAnswers.sort((a,b) => a['orders']-b['orders']);
 
 // ======================================== 처리 ========================================
 
-function survey(i) { // 문항별 답항 E1 E2 가져오기
-    let exmaple_ans = "";
-    let ans_num = "";
-    
-    answers.forEach(answer => {
-        if(answer["questions_uid"] == "Q"+(i+1)) {
-            exmaple_ans += answer['example_uid']+" ";
-            console.log();
-        }
-    })
-    exmaple_ans = exmaple_ans.trim();
-    example_strs = exmaple_ans.split(' ');
-    example_strs.forEach(example_str => {
-        ans_num += (example_str.charAt(1)-1)+" ";
-    })
-    
-    ans_num= ans_num.trim().split(' ').map(Number);
-    return ans_num; // E1, E2 여기서 E알파벳 없애고 숫자로 변경
-}
-
 function surveyQuestion(i) { //설문 질문
     console.log(`${surveyQuestions[i]['orders']}. ${surveyQuestions[i]['questions']}`);
 }
 
-function surveyAnswer(args) { // 설문 답항
+function surveyAnswer(...args) { // 설문 답항
     args.forEach(arg => {
         str += `(${surveyAnswers[arg]['orders']}) ${surveyAnswers[arg]['example']} `;
     })
@@ -109,8 +69,28 @@ function userAnswer(i) { // 유저 답변
 
 for(let i = 0 ; i<surveyQuestions.length; i++) {
     surveyQuestion(i);
-    surveyAnswer(survey(i));
-    userAnswer(i);  
+    switch(i) {
+            case 0:  
+                surveyAnswer(0,1,2);
+                userAnswer(i);
+              break;
+            case 1:
+                surveyAnswer(0,1,2,3);
+                userAnswer(i);
+                break;
+            case 2:
+                surveyAnswer(0,1);
+                userAnswer(i);
+                 break;    
+            case 3:
+                surveyAnswer(0,1,2,3,4);
+                userAnswer(i);
+                break;
+            case 4:
+                surveyAnswer(0,1,2);
+                userAnswer(i);
+                break;
+            }       
 }
 
 console.log("--------------------- 설문자 선택 --------------------------");
