@@ -20,3 +20,4 @@ const animals_obj = [
   { name: "lizard", species: "reptile" },
 ];
 
+console.log(`${animals_obj[1]['name']}`);

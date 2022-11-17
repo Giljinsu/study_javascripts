@@ -2,7 +2,7 @@
 function sum(a) {
     let sum =0
     for(let b of a) {
-        sum =sum + b;
+        sum = sum + b;
     }
     return sum;
 }
