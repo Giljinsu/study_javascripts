@@ -35,8 +35,8 @@
         })
 
         let listList = document.querySelectorAll(".list");
-        listList.forEach(list => {
-            console.log(list);
+        listList.forEach((list, index) => {
+            console.log(`${index} : ${list.outerHTML}`);
         })
         console.log("IT회사")
         let itList = listList[0].querySelectorAll(".item");
