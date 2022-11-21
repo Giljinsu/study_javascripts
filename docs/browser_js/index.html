@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3 onclick="alert('alert Window !')">Index</h3>
+    <h3 onclick="alert('alert Window !')">Index</h3>
+    <h3 onclick="window.close()">window close</h3>
+    <script>
+      const animals = ["dog", "cat", "bird", "fish", "lizard"];
+
+      //normal
+      for (i = 0; i < animals.length; i++) {
+        console.log(`${animals[i]}`);
+      }
+
+      // for iterable
+
+      const cars = ["BMW", "Volovo", "Mini"];
+      for (let car of cars) {
+        console.log(`${car}`);
+      }
+    </script>
+  </body>
+</html>

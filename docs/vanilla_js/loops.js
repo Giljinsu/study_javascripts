@@ -19,7 +19,7 @@ cars.forEach(car => {
 //for each
 const array1 = ['a', 'b', 'c'];
 
-array1.forEach(element => console.log(element));
+array1.forEach((element, index) => console.log(`${element}, index ${index}`));
 //element => console.log(element)가 function
 
 // Arrow Function

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>
+        Selectors
+    </h3>
+    <h3 id="selector">selector with id</h3>
+
+    <p id="title">DOM</p>
+    <button id="btn">Click Me</button>
+    <ul class="list">
+        <li class="item">Apple</li>
+        <li class="item">Azue</li>
+        <li class="item">Samsung</li>
+        <li class="item">IBM</li>
+    </ul>
+    <ul class="list">
+        <li class="item">banana</li>
+        <li class="item">berry</li>
+        <li class="item">melon</li>
+    </ul>
+
+    <a id="google" href="https://www.google.com">Google</a>
+
+    <script>
+        let bodyLists = document.querySelectorAll("body > h3, p, button, a");
+        bodyLists.forEach((bodyList, index) => {
+            console.log(bodyList);
+        })
+        // let h3list = document.querySelector("h3");
+        // console.log(h3list);
+        
+        // let titleList = document.querySelector("#title");
+        // console.log(titleList);
+
+        // let buttonList = document.querySelector("#btn");
+        // console.log(buttonList);
+
+        let listList = document.querySelectorAll(".list");
+        console.log(listList[0].querySelectorAll(".item"));
+        console.log(listList[1].querySelectorAll(".item"));
+
+        let aList = document.querySelectorAll("#google");
+        console.log(aList);
+
+    </script>
+</body>
+</html>
