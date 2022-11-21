@@ -43,11 +43,19 @@
         // console.log(buttonList);
 
         let listList = document.querySelectorAll(".list");
-        console.log(listList[0]);
-        console.log(listList[1]);
-        
-        console.log(listList[0].querySelectorAll(".item"));
-        console.log(listList[1].querySelectorAll(".item"));
+        listList.forEach(list => {
+            console.log(list);
+        })
+        console.log("IT회사")
+        let itList = listList[0].querySelectorAll(".item");
+        itList.forEach(it => {
+            console.log(it);
+        })
+        console.log("과일")
+        let fruitList = listList[1].querySelectorAll(".item");
+        fruitList.forEach(fruit => {
+            console.log(fruit);
+        })
 
     </script>
 </body>
