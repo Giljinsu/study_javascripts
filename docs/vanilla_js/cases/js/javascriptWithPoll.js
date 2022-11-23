@@ -49,7 +49,8 @@ surveyAnswers.sort((a,b) => a['orders']-b['orders']);
 
 // ======================================== 처리 ========================================
 
-function survey(i) { // 질문 추가시 자동으로 추가 하기 위함
+// 질문 추가시 자동으로 추가 하기 위함
+function survey(i) { 
     let exmaple_ans = "";
     let ans_num = "";
     
@@ -69,11 +70,13 @@ function survey(i) { // 질문 추가시 자동으로 추가 하기 위함
     return ans_num; // E1, E2 여기서 E알파벳 없애고 숫자로 변경
 }
 
-function surveyQuestion(i) { //설문 질문
+//설문 질문
+function surveyQuestion(i) { 
     return `${surveyQuestions[i]['orders']}. ${surveyQuestions[i]['questions']}`;
 }
 
-function surveyAnswer(args) { // 설문 답항 
+// 설문 답항 
+function surveyAnswer(args) { 
     let str = "";
     args.forEach(arg => {
         //onclick 사용  onclick='answer_check(${arg+1})' 
@@ -122,7 +125,6 @@ surveyAnswer_Html.innerHTML=surveyAnswer(survey(i));
 
 // ducument.querySelector(`#${arg+1}ans`) 라디오 버튼 id로 요소를 가져오기가 안됨
 // 따라서 onclick 사용
-
 // 라디오 버튼 클릭시
 function answer_check(num) { // num은 몇번째 라벨인지 확인하기 위함
     let temp = document.getElementById(`${num}label`);
