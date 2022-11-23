@@ -107,7 +107,7 @@ function nextEvent() {
     } else if(i== (surveyQuestions.length-1)) { // 마지막 페이지에 결과 페이지 넣음
             temp = "";
         for(let j = 0; j<surveyQuestions.length ; j++) { 
-            temp += surveyQuestion(j)+`<br>` +`답 : ${check[j+1]} <br><br>` ;
+            temp += surveyQuestion(j)+`<br>` +`답 : ${check[j]} <br><br>` ;
         }
         surveyQuestion_Html.innerHTML=temp;
         surveyAnswer_Html.innerHTML=' ';
@@ -129,7 +129,7 @@ surveyAnswer_Html.innerHTML=surveyAnswer(survey(i));
 function answer_check(num) { // num은 몇번째 라벨인지 확인하기 위함
     let temp = document.getElementById(`${num}label`);
     // temp.innerHTML;
-    check[i+1] = temp.innerText; // 답변을 문항별로 텍스트 형식으로 저장 
+    check[i] = temp.innerText; // 답변을 문항별로 텍스트 형식으로 저장 
 }
 
 
