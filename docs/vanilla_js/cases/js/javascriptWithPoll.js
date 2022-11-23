@@ -84,25 +84,25 @@ function surveyAnswer(args) { // 설문 답항 i는 설문질문 번호
 
 
 // ======================================== 출력 ========================================
-let i = 0;
+let i = 0; // 페이지
 let prevButton = document.querySelector("#btn_Prev");
 let nextButton = document.querySelector("#btn_Next");
-let surveyQuestion_Html = document.querySelector('#surveyQuestion');
-let surveyAnswer_Html = document.querySelector("#surveyAnswer");
+let surveyQuestion_Html = document.querySelector('#surveyQuestion'); //html 상에 나타냄
+let surveyAnswer_Html = document.querySelector("#surveyAnswer"); //html 상에 나타냄
 let check=[];
 
 prevButton.addEventListener("click", prevEvent);
 nextButton.addEventListener("click", nextEvent);
     
-
+// 다음 페이지
 let temp = "";
 function nextEvent() {
-    if(i<surveyQuestions.length-1) {i++;
+    if(i<surveyQuestions.length-1) {i++; 
         surveyQuestion_Html.innerHTML=surveyQuestion(i);
         surveyAnswer_Html.innerHTML=surveyAnswer(survey(i));
-    } else if(i== (surveyQuestions.length-1)) {
+    } else if(i== (surveyQuestions.length-1)) { // 마지막 페이지에 결과 페이지 넣음
             temp = "";
-        for(let j = 0; j<surveyQuestions.length ; j++) {
+        for(let j = 0; j<surveyQuestions.length ; j++) { 
             temp += surveyQuestion(j)+`<br>` +`답 : ${check[j+1]} <br><br>` ;
         }
         surveyQuestion_Html.innerHTML=temp;
@@ -110,7 +110,7 @@ function nextEvent() {
         i++;
     }
 }
-
+// 이전  페이지
 function prevEvent() {
     if(i>0) {i--;}
     surveyQuestion_Html.innerHTML=surveyQuestion(i);
@@ -119,10 +119,11 @@ function prevEvent() {
 surveyQuestion_Html.innerHTML=surveyQuestion(i);
 surveyAnswer_Html.innerHTML=surveyAnswer(survey(i));
 
+// 라디오 버튼 클릭시
 function answer_check(num) {
     let temp = document.getElementById(`${num}label`);
     // temp.innerHTML;
-    check[i+1] = temp.innerText;
+    check[i+1] = temp.innerText; // 답변을 저장 
 }
 
 
