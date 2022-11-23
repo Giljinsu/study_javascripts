@@ -120,6 +120,9 @@ function prevEvent() {
 surveyQuestion_Html.innerHTML=surveyQuestion(i);
 surveyAnswer_Html.innerHTML=surveyAnswer(survey(i));
 
+// ducument.querySelector(`#${arg+1}ans`) 라디오 버튼 id로 요소를 가져오기가 안됨
+// 따라서 onclick 사용
+
 // 라디오 버튼 클릭시
 function answer_check(num) { // num은 몇번째 라벨인지 확인하기 위함
     let temp = document.getElementById(`${num}label`);
