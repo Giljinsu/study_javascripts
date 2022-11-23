@@ -12,7 +12,7 @@ let surveyQuestions = [ //문항
     {questions_uid : "Q4", questions:"해당 매장을 다음에도 재방문 하실 의향이 있으십니까?", orders : 4},
     {questions_uid : "Q2", questions:"직원이 제조한 음료에 대해 맛은 좋았습니까?", orders : 2},
     {questions_uid : "Q5", questions:"주문하신 음료가 나오기까지 시간이 적당하였습니까?", orders : 5},
-    {questions_uid : "Q3", questions:"주문시 직원은 고객님께 친절 하였습니까?", orders : 3}
+    {questions_uid : "Q3", questions:"주문시 직원은 고객님께 친절 하였습니까?", orders : 3},
 ];
 
 let surveyAnswers = [ //답항
