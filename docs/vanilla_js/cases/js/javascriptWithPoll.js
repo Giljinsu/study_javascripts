@@ -76,7 +76,8 @@ function surveyQuestion(i) { //설문 질문
 function surveyAnswer(args) { // 설문 답항 i는 설문질문 번호
     let str = "";
     args.forEach(arg => {
-        str += `<input type="radio" onclick='answer_check(${arg+1})' id="${arg+1}ans" name="ans"/><label id="${arg+1}label" for="${arg+1}ans">(${surveyAnswers[arg]['orders']}) ${surveyAnswers[arg]['example']}</label><br>`;
+        //onclick 사용 
+        str += `<input type="radio" onclick='answer_check(${arg+1})' id="${arg+1}ans" name="ans"/><label id="${arg+1}label" for="${arg+1}ans">(${surveyAnswers[arg]['orders']}) ${surveyAnswers[arg]['example']}</label><br>`; 
     });
     return str;
     
