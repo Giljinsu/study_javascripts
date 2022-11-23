@@ -73,10 +73,10 @@ function surveyQuestion(i) { //설문 질문
     return `${surveyQuestions[i]['orders']}. ${surveyQuestions[i]['questions']}`;
 }
 
-function surveyAnswer(args) { // 설문 답항 i는 설문질문 번호
+function surveyAnswer(args) { // 설문 답항 
     let str = "";
     args.forEach(arg => {
-        //onclick 사용 
+        //onclick 사용  onclick='answer_check(${arg+1})' 
         str += `<input type="radio" onclick='answer_check(${arg+1})' id="${arg+1}ans" name="ans"/><label id="${arg+1}label" for="${arg+1}ans">(${surveyAnswers[arg]['orders']}) ${surveyAnswers[arg]['example']}</label><br>`; 
     });
     return str;
@@ -121,10 +121,10 @@ surveyQuestion_Html.innerHTML=surveyQuestion(i);
 surveyAnswer_Html.innerHTML=surveyAnswer(survey(i));
 
 // 라디오 버튼 클릭시
-function answer_check(num) {
+function answer_check(num) { // num은 몇번째 라벨인지 확인하기 위함
     let temp = document.getElementById(`${num}label`);
     // temp.innerHTML;
-    check[i+1] = temp.innerText; // 답변을 저장 
+    check[i+1] = temp.innerText; // 답변을 문항별로 텍스트 형식으로 저장 
 }
 
 
