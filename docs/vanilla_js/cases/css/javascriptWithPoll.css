@@ -1,0 +1,34 @@
+body {
+    margin: 0px;
+}
+
+header{
+    background-color: blanchedalmond;
+    text-align: center;
+    font-size: 50px;
+}
+
+.body {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.body > div {
+    border: 1px solid black;
+    width: 1000px;
+    height: 500px;
+    padding: 20px;
+}
+
+.body > div > button {
+    background-color: bisque;
+    width: 60px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+}

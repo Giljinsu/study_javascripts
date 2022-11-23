@@ -1,30 +1,11 @@
-// 화면 정의서 대로 출력
-// -  Array , Object
-// - functions : 3개 만들어
-// - 답변은 미리 파일에 저장된것을 사용
-// - 화면정의서는 문항이 4개인데 5개로 
-
-// -프로세스
-// 입력 
-// + 문항 사항 : object in Array - [{문항},{문항},{문항},{문항}] (option : orders가 현재 표시된 상태를 순서 있게 만드는 것)
-// + 설문 답항 : object in Array - [{답항},{답항},{답항},{답항}] (option : orders가 현재 표시된 상태를 순서 있게 만드는 것)
-// + 답변에 대한사항 : 파일 - [1,2 ,4, 3] -하드코딩 X 파일 가져옴
-
-// 처리
-// 문항, 설문 답항, 답변 매칭
-
-
-// 출력
-// 매칭 출력
+// -한 문항 씩 출력,
+// -Next Button 클릭 시 다음 문항 출력
+// - 완료 시 선택했던 문항 답항 출력
+// - javascriptWithPoll.html . css .js
+// html은 사이트 링크 js도 올려
 
 // ======================================== 입력 ========================================
-let str = "";
 
-const fs = require('fs');
-const filepath =
-    process.platform === "linux" ? "/dev/stdin" : "docs/vanilla_js/cases/answers.txt"
-
-let inputs = fs.readFileSync(filepath).toString().trim().split("\n").map(Number); // 유저의 답변
 
 let surveyQuestions = [ //문항
     {questions_uid : "Q1", questions:"해당 매장을 방문시 매장은 청결 하였습니까?", orders : 1},
@@ -89,35 +70,64 @@ function survey(i) { // 질문 추가시 자동으로 추가 하기 위함
 }
 
 function surveyQuestion(i) { //설문 질문
-    console.log(`${surveyQuestions[i]['orders']}. ${surveyQuestions[i]['questions']}`);
+    return `${surveyQuestions[i]['orders']}. ${surveyQuestions[i]['questions']}`;
 }
 
-function surveyAnswer(args) { // 설문 답항
+function surveyAnswer(args) { // 설문 답항 i는 설문질문 번호
+    let str = "";
     args.forEach(arg => {
-        str += `(${surveyAnswers[arg]['orders']}) ${surveyAnswers[arg]['example']} `;
-    })
-    console.log(str);
-    console.log("");
-    str= "";
+        str += `<input type="radio" onclick='answer_check(${arg+1})' id="${arg+1}ans" name="ans"/><label id="${arg+1}label" for="${arg+1}ans">(${surveyAnswers[arg]['orders']}) ${surveyAnswers[arg]['example']}</label><br>`;
+    });
+    return str;
+    
 }
 
-function userAnswer(i) { // 유저 답변
-    console.log(`답) (${inputs[i]})\n`);
-}
 
 // ======================================== 출력 ========================================
+let i = 0;
+let prevButton = document.querySelector("#btn_Prev");
+let nextButton = document.querySelector("#btn_Next");
+let surveyQuestion_Html = document.querySelector('#surveyQuestion');
+let surveyAnswer_Html = document.querySelector("#surveyAnswer");
+let check=[];
 
-for(let i = 0 ; i<surveyQuestions.length; i++) {
-    surveyQuestion(i);
-    surveyAnswer(survey(i));
-    userAnswer(i);  
+prevButton.addEventListener("click", prevEvent);
+nextButton.addEventListener("click", nextEvent);
+    
+
+let temp = "";
+function nextEvent() {
+    if(i<surveyQuestions.length-1) {i++;
+        surveyQuestion_Html.innerHTML=surveyQuestion(i);
+        surveyAnswer_Html.innerHTML=surveyAnswer(survey(i));
+    } else if(i== (surveyQuestions.length-1)) {
+            temp = "";
+        for(let j = 0; j<surveyQuestions.length ; j++) {
+            temp += surveyQuestion(j)+`<br>` +`답 : ${check[j+1]} <br><br>` ;
+        }
+        surveyQuestion_Html.innerHTML=temp;
+        surveyAnswer_Html.innerHTML=' ';
+        i++;
+    }
 }
 
-console.log("--------------------- 설문자 선택 --------------------------");
+function prevEvent() {
+    if(i>0) {i--;}
+    surveyQuestion_Html.innerHTML=surveyQuestion(i);
+    surveyAnswer_Html.innerHTML=surveyAnswer(survey(i));
+}
+surveyQuestion_Html.innerHTML=surveyQuestion(i);
+surveyAnswer_Html.innerHTML=surveyAnswer(survey(i));
 
-for(let i = 0 ; i<surveyQuestions.length; i++) {
-    surveyQuestion(i);
-    userAnswer(i);
+function answer_check(num) {
+    let temp = document.getElementById(`${num}label`);
+    // temp.innerHTML;
+    check[i+1] = temp.innerText;
 }
 
-console.log("이용해주셔서 감사합니다!");
+
+
+
+
+
+
