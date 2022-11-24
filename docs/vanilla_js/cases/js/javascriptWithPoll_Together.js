@@ -107,7 +107,7 @@ function getQuestionByUid(questions_uid) {
 
 // 출력 
 for(poll of polls) {
-  console.log(`${getQuestionByUid(poll['questions_uid'])}`);
+  console.log(`${poll['questions_uid']}. ${getQuestionByUid(poll['questions_uid'])}`);
   let answer_uids = poll['answer_uids'];
   answer_uids.forEach((answer_uid, index) => {
     console.log(`${index+1}. : ${answer_uid}`);
