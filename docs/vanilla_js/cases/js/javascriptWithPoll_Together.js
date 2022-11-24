@@ -68,25 +68,48 @@ const questions_answers = [
 
 let polls = [];// 전체 묶음
 let question_compare;
-let questions = [];
+let questions = {}; // 내부 묶음
 let answer_uids = []; // 내부 설문 답변 묶음
-
 for (let idx = 0; idx < questions_answers.length; idx++) {
-  if(question_compare != questions_answers[idx]['questions_uid']) {
-    if(questions.length > 0) {
+  if (question_compare != questions_answers[idx]["questions_uid"]) {
+    if (Object.keys(questions).length > 0) {
       questions["answer_uids"] = answer_uids;
       polls.push(questions);
-      questions={};
+      questions = {};
+      answer_uids = [];
     }
-    // console.log(`!== : ${questions_answers[idx]['questions_uid']}`);
-    // console.log(`!== : ${questions_answers[idx]['answer_uid']}`);
-    questions['questions_uid'] = (questions_answers[idx]["questions_uid"]);
+
+    // console.log(`!= : ${questions_answers[idx]["questions_uid"]}`);
+    // console.log(`!= : ${questions_answers[idx]["answer_uid"]}`);
+    questions["questions_uid"] = questions_answers[idx]["questions_uid"];
     answer_uids.push(questions_answers[idx]["answer_uid"]);
   } else {
-    // console.log(`== : ${questions_answers[idx]['answer_uid']}`)
+    // console.log(`== : ${questions_answers[idx]["answer_uid"]}`);
     answer_uids.push(questions_answers[idx]["answer_uid"]);
+    if (idx + 1 >= questions_answers.length) {
+      questions["answer_uids"] = answer_uids;
+      polls.push(questions);
+    }
   }
-  question_compare = questions_answers[idx]['questions_uid']; // 이전 uid 입력
-  if(idx == questions_answers.length-1) {polls.push(questions);}
+  question_compare = questions_answers[idx]["questions_uid"]; // 이전 uid 입력
 }
-console.log(`${polls}`);
+
+// 설문 문항을 가져오는 function
+function getQuestionByUid(questions_uid) {
+  let questions_desc;
+  for(list of questions_list) {
+    if(list['questions_uid'] == questions_uid) {
+      questions_desc = list['question'];
+    }
+  }
+  return questions_desc;
+}
+
+// 출력 
+for(poll of polls) {
+  console.log(`${getQuestionByUid(poll['questions_uid'])}`);
+  let answer_uids = poll['answer_uids'];
+  answer_uids.forEach((answer_uid, index) => {
+    console.log(`${index+1}. : ${answer_uid}`);
+  });
+}
