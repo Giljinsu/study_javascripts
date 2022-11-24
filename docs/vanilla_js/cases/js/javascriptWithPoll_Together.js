@@ -64,23 +64,27 @@ const questions_answers = [
 // ]
 // 1차 방식 : [Q1,Q2,Q3,Q4,Q5]
 // 2차 방식 : Array in Array [[Q1,E1,2],[Q2,E1,E2,E3]....]]
+// 3차 방식 : Object in Array[{questions_uid:Q1, answer_uid:[E1,E2], answer:Q2},....]
 
 let polls = [];// 전체 묶음
 let question_compare;
 let questions = [];
+let answer_uids = []; // 내부 설문 답변 묶음
+
 for (let idx = 0; idx < questions_answers.length; idx++) {
   if(question_compare != questions_answers[idx]['questions_uid']) {
     if(questions.length > 0) {
+      questions["answer_uids"] = answer_uids;
       polls.push(questions);
-      questions=[];
+      questions={};
     }
     // console.log(`!== : ${questions_answers[idx]['questions_uid']}`);
     // console.log(`!== : ${questions_answers[idx]['answer_uid']}`);
-    questions.push(questions_answers[idx]["questions_uid"]);
-    questions.push(questions_answers[idx]["answer_uid"]);
+    questions['questions_uid'] = (questions_answers[idx]["questions_uid"]);
+    answer_uids.push(questions_answers[idx]["answer_uid"]);
   } else {
     // console.log(`== : ${questions_answers[idx]['answer_uid']}`)
-    questions.push(questions_answers[idx]["answer_uid"]);
+    answer_uids.push(questions_answers[idx]["answer_uid"]);
   }
   question_compare = questions_answers[idx]['questions_uid']; // 이전 uid 입력
   if(idx == questions_answers.length-1) {polls.push(questions);}

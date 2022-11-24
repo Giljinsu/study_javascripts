@@ -55,7 +55,9 @@ function survey(i) {
     let ans_num = "";
     
     answers.forEach(answer => {
-        if(answer["questions_uid"] == "Q"+(i+1)) {
+        // if(answer["questions_uid"] == "Q"+(i+1)) {
+        if(answer["questions_uid"] == surveyQuestions[i]["questions_uid"]) {
+             // 위에서 정렬을 헀기때문에 surveyQuestions[i]["questions_uid"] 사용
             exmaple_ans += answer['example_uid']+" ";
             console.log();
         }
