@@ -96,13 +96,26 @@ for (let idx = 0; idx < questions_answers.length; idx++) {
 
 // 설문 문항을 가져오는 function
 function getQuestionByUid(questions_uid) {
-  let questions_desc;
+  let questions_desc = "";
   for(list of questions_list) {
-    if(list['questions_uid'] == questions_uid) {
+    if(list['questions_uid'] === questions_uid) {
       questions_desc = list['question'];
+      break;
     }
   }
   return questions_desc;
+}
+
+// 설문 답항을 가져오는 function
+function getAnswerByUid(answer_uid) {
+  let answer_desc = "";
+  for(list of answer_list) {
+    if(list['answer_uid'] === answer_uid) {
+      answer_desc = list['answer'];
+      break;
+    }
+  }
+  return answer_desc;
 }
 
 // 출력 
@@ -110,6 +123,48 @@ for(poll of polls) {
   console.log(`${poll['questions_uid']}. ${getQuestionByUid(poll['questions_uid'])}`);
   let answer_uids = poll['answer_uids'];
   answer_uids.forEach((answer_uid, index) => {
-    console.log(`${index+1}. : ${answer_uid}`);
+    console.log(`${index+1}. : ${getAnswerByUid(answer_uid)}`);
   });
+}
+
+// Event handlers 
+// Next 클릭 시 순서 있게 설문 표시
+// 대상변수는 polls
+let queryNext = document.querySelector('#next');
+queryNext.addEventListener("click", setPollConetent);
+let queryPrev = document.querySelector('#prev');
+queryPrev.addEventListener("click", setPollConetent_prev);
+
+let index = 0;
+function setPollConetent() {
+  if(index == questions_list.length) {
+  alert('마지막 페이지 입니다!');
+  return;
+}
+    let queryContent = document.querySelector("#poll-contents");
+    // polls[0]["questions_uid"] // 설문 문항
+    // polls[0]["answer_uids"] // 설문 답항 묶음
+    // 1. 매장 상태가 좋은가요 ?
+    // (1) 예
+    // (2) 아니다.
+    // console.log(getQuestionByUid(polls[index]["questions_uid"]));
+    let desc = `<div>${index+1}. ${getQuestionByUid(polls[index]['questions_uid'])}</div>`;
+    polls[index]["answer_uids"].forEach((answer_uid, index) => {
+      //answer
+      // console.log(`${index+1}. : ${getAnswerByUid(answer_uid)}`);
+      desc += `<div><input type="radio" />(${index+1}). : ${getAnswerByUid(answer_uid)}</div>`;
+    })
+    queryContent.innerHTML = desc;
+    index++;
+    
+  }
+
+
+function setPollConetent_prev() {
+  if(index <= 1) {
+  alert('첫 페이지 입니다!');
+  return;
+}
+    index = index - 2;
+    setPollConetent();
 }
