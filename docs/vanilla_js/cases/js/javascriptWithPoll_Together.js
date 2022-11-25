@@ -152,7 +152,7 @@ function setPollConetent() {
     polls[index]["answer_uids"].forEach((answer_uid, index) => {
       //answer
       // console.log(`${index+1}. : ${getAnswerByUid(answer_uid)}`);
-      desc += `<div><input type="radio" />(${index+1}). : ${getAnswerByUid(answer_uid)}</div>`;
+      desc += `<div><input type="radio" name="answers" id="num${index+1}" /><label for="num${index+1}">(${index+1}). : ${getAnswerByUid(answer_uid)}</label></div>`;
     })
     queryContent.innerHTML = desc;
     index++;
