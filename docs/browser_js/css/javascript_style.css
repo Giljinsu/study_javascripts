@@ -1,0 +1,14 @@
+* {
+    border: 1px solid gray;
+    padding: 0.5rem;
+}
+
+.container {
+    display: flex;
+}
+
+.button {
+    width: 100%;
+    color: white;
+    background-color: darkgreen;
+}
