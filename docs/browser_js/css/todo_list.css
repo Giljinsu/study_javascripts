@@ -46,15 +46,18 @@ div > div {
     /* flex-direction: column; */
 }
 
-
 .favorite {
+    color: orange;
+    cursor: pointer;
+}
+
+#notfavorite {
       font-variation-settings:
       'FILL' 0,
       'wght' 400,
       'GRAD' 0,
       'opsz' 48;
-      color: orange;
-      cursor: pointer;
+      
     }
 
 #favorite {

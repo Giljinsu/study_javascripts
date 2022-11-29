@@ -24,6 +24,7 @@ comment.addEventListener('click', (event) => {
 comment.addEventListener('keydown', (event) => {
     if(event.code=='Enter') {
         addComment(event);
+        return;
     }
 })
 
@@ -43,7 +44,7 @@ function addComment(event) {
                     ${comment.value}
             </span>
             <span>
-                <i class="material-symbols-outlined favorite" id="">favorite</i>
+                <i class="material-symbols-outlined favorite" id="notfavorite">favorite</i>
                 <i class="material-icons delete">delete</i>
             </span>
         </div>`;
@@ -51,23 +52,19 @@ function addComment(event) {
 }
 
 // 삭제 및 좋아요
-let flag=false;
 newComment.addEventListener('click', (event) => {
     // console.log('');
     if(event.target.innerHTML=="delete") {
         event.target.parentElement.parentElement.remove();
     }
     //좋아요
-    if(event.target.innerHTML=="favorite"&&flag==true) {
-        event.target.id="";
-        flag=false;
-        return;
-    }
-    if(event.target.innerHTML=="favorite") {
-        if(flag==false){
+    if(event.target.id=="notfavorite") {
         event.target.id="favorite";
-        flag=true;
-        }
         return;
     }
+    if(event.target.id=="favorite") {
+        event.target.id="notfavorite";
+        return;
+    }
+
 })
