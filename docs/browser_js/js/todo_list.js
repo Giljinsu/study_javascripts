@@ -22,7 +22,6 @@ comment.addEventListener('click', (event) => {
 
 //엔터시 추가
 comment.addEventListener('keydown', (event) => {
-    console.log("");
     if(event.code=='Enter') {
         addComment(event);
     }
