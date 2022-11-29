@@ -41,9 +41,9 @@ div > div {
 }
 
 .newComment > span {
-    display: flex;
+    /* display: flex; */
     text-align: center;
-    flex-direction: column;
+    /* flex-direction: column; */
 }
 
 
