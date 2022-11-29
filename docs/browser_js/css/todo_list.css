@@ -1,0 +1,71 @@
+*{
+    /* border: 1px solid gray; */
+    font-size: 20px;
+}
+
+div > div {
+    padding: 0.5rem;
+}
+
+.title {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    background-color: purple;
+    font-size: 2rem;
+}
+
+.comment {
+    width: 80%;
+    padding: 1rem 1rem 1rem 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+}
+
+.commentButton {
+    width: 10%;
+    padding: 1rem;
+    color: white;
+    background-color: purple;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.newComment {
+    margin-bottom: 0.2rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.newComment > span {
+    text-align: center;
+}
+
+
+.favorite {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48;
+      color: orange;
+      cursor: pointer;
+    }
+
+#favorite {
+    font-variation-settings:
+      'FILL' 100,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48;
+      color: orange;
+      cursor: pointer;
+}
+
+.delete {
+    color: crimson;
+    cursor: pointer;
+}
+
