@@ -1,6 +1,7 @@
 let comment = document.querySelector("#comment");
 let commentButton = document.querySelector("#commentButton");
 let newComment = document.querySelector('#commentDiv');
+let flag = true; // 초기값인지 아닌지 flag
 
 
 // let newItem = `<div class="newComment">
@@ -35,8 +36,9 @@ commentButton.addEventListener('click', (event) => {
 
 //커멘트 추가
 function addComment(event) {
-    if(comment.value=="") {
+    if(comment.value=="" || flag==true) {
         alert("문장을 입력해주세요!");
+        flag=false;
         return;
     }
     let newItem = `<div class="newComment">
