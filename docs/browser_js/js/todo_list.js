@@ -19,6 +19,7 @@ let flag = true; // 초기값인지 아닌지 flag
 comment.addEventListener('click', (event) => {
     comment.value='';
     comment.style.color = 'black';
+    flag=false;
 })
 
 //엔터시 추가
@@ -38,7 +39,6 @@ commentButton.addEventListener('click', (event) => {
 function addComment(event) {
     if(comment.value=="" || flag==true) {
         alert("문장을 입력해주세요!");
-        flag=false;
         return;
     }
     let newItem = `<div class="newComment">
