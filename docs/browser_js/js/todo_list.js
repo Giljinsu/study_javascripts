@@ -2,6 +2,7 @@ let comment = document.querySelector("#comment");
 let commentButton = document.querySelector("#commentButton");
 let newComment = document.querySelector('#commentDiv');
 
+
 // let newItem = `<div class="newComment">
 //             <span>
 //                     ${comment.value}
@@ -13,9 +14,10 @@ let newComment = document.querySelector('#commentDiv');
 //             </span>
 //         </div>`;
 
-// 클릭시 내용 지우기
+// 클릭시 내용 지우기 
 comment.addEventListener('click', (event) => {
     comment.value='';
+    comment.style.color = 'black';
 })
 
 //엔터시 추가
