@@ -24,7 +24,7 @@ comment.addEventListener('click', (event) => {
 
 //엔터시 추가
 comment.addEventListener('keydown', (event) => {
-    if(event.code=='Enter') {
+    if(event.key=='Enter') {
         addComment(event);
         return;
     }

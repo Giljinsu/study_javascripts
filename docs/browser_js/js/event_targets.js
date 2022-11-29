@@ -9,7 +9,7 @@ function singleEvent(event) {
 let queryKeydown = document.querySelector('#keydown');
 queryKeydown.addEventListener("keydown", (event)=> {
     console.log(event);
-    if(event.code == 'Enter') {
+    if(event.key == 'Enter') {
         keydownDesc(queryKeydown.value);
     }
     console.log(event.target);
